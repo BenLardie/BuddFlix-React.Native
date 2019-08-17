@@ -1,14 +1,21 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { useNavigation } from 'react-navigation-hooks';
+import Strains from './Strains';
+import logo from './Images/logo.png';
 
 
 
 const Welcome = () => {
+    const { navigate } = useNavigation();
 
     return (
-        <Button title="Pick a Strain" 
-        onPress={() => navigate('Strains')}
-        />
+        <View>
+            <Image source={ logo } />
+            <Button title="Pick a Strain" 
+            onPress={() => navigate('Strains')}
+            />
+        </View>
     )
 }
 

@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
-import logo from './Images/logo.png';
-// import Strain from './Strains';
-// import Welcome from './Welcome';
+import Strain from './Strains';
+import Welcome from './Welcome';
 
 
 export default function App() {
@@ -22,23 +21,6 @@ export default function App() {
 
   return (
     <AppContainer />
-  )
-}
-
-const Welcome = () => {
-
-  return (
-      <Button title='Pick a Strain' 
-      onPress={() => navigation.navigate('Strain')}
-      />
-  )
-}
-
-
-const Strain = () => {
-
-  return (
-      <Text>Hello World</Text>
   )
 }
 
