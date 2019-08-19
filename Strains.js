@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
 import axios from 'axios';
 
 
@@ -18,33 +18,39 @@ const Strains = () => {
         });
     }, []);
 
-    // useEffect(() => {
-    //     async () => {
-    //         try {
-    //           let response = await fetch(
-    //             'https://buddflix.herokuapp.com/api/race/',
-    //           );
-    //           let responseJson = await response.json();
-    //             setResults(responseJson.data.objects);                
-    //         } catch (error) {
-    //           console.error(error);
-    //         }
-    //       }
-    // },[])
-
     const display = races.map((strain) => {
         console.log(strain)
         return (
-            <Text key={strain.id}>{strain.name}</Text>
+            <TouchableOpacity style={styles.button} key={strain.id}>
+                <Text style={styles.buttonText}>{strain.name}</Text>
+            </TouchableOpacity>
         )
     })
 
     return (
-        <View>
-       {display}
+        <View style= {styles.container}>
+        {display}
        </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+      paddingTop: 60,
+      alignItems: 'center'
+    },
+    button: {
+      marginBottom: 30,
+      width: 260,
+      alignItems: 'center',
+      backgroundColor: '#2196F3'
+    },
+    buttonText: {
+      textAlign: 'center',
+      padding: 20,
+      color: 'white'
+    }
+  });
 
 export default Strains;
 
