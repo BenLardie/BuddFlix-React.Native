@@ -8,8 +8,18 @@ import logo from './Images/logo.png';
 const Welcome = () => {
     const { navigate } = useNavigation();
 
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+  });
+
     return (
-        <View>
+        <View style={styles}>
             <Image source={logo} />
             <Button title="Pick a Strain"
                 onPress={() => navigate('Strains')}
