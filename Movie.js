@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import { useNavigationParam } from 'react-navigation-hooks';
+import axios from 'axios';
 
 
 const Movie = () => {
 
     const strain = useNavigationParam('Strain');
 
-const styles = StyleSheet.create({
+    useEffect(()=> {
+        const url = `https://buddflix.herokuapp.com/api/genre?race=${strain.id}`
+        axios.get(url).then(response => console.log(`movie ${response.data.tmdb_id}`))
+    },[])
+
+    const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
@@ -15,6 +21,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
   });
+
+
 
     return (
         <Text>Hello {strain.name}</Text>
