@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation, useNavigationParam } from 'react-navigation-hooks';
 import axios from 'axios';
 
 
 
 const Strains = () => {
 
-    const [races, setRaces] = useState([])
-
+    const { navigate } = useNavigation();
+    const [races, setRaces] = useState([]);
     const url = 'https://buddflix.herokuapp.com/api/race/'
 
     useEffect(() => {
         axios.get(url).then(response => {
             const results = response.data.objects;
-            console.log(results)
             setRaces(results);
         });
     }, []);
 
+
     const display = races.map((strain) => {
-        console.log(strain)
         return (
-            <TouchableOpacity style={styles.button} key={strain.id}>
+            <TouchableOpacity style={styles.button} key={strain.id} onPress={() => {
+                navigate('StrainList',{
+                selectedStrain: strain,
+            })}
+            }>
                 <Text style={styles.buttonText}>{strain.name}</Text>
             </TouchableOpacity>
         )
