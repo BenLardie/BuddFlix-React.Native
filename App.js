@@ -4,7 +4,7 @@ import { createAppContainer, createStackNavigator } from 'react-navigation';
 import Strain from './Strains';
 import Welcome from './Welcome';
 import StrainList from './StrainList';
-
+import Movie from './Movie';
 
 export default function App() {
 
@@ -12,6 +12,7 @@ export default function App() {
       Welcome:{screen: Welcome},
       Strains:{screen: Strain},
       StrainList:{screen: StrainList},
+      Movie:{screen:Movie},
     });
 
     const AppContainer = createAppContainer(AppNavigator)

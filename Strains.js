@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useNavigation, useNavigationParam } from 'react-navigation-hooks';
+import { useNavigation } from 'react-navigation-hooks';
 import axios from 'axios';
 
 
