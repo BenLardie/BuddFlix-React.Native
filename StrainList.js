@@ -36,7 +36,6 @@ const StrainList = () => {
 const display = allStrains.map((strain) => { 
 return (
     <TouchableOpacity style={styles.button} key={strain.id} onPress={() => {
-        console.log(strain)
         navigate('Movie',{
         Strain: strain,
     })}
