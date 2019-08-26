@@ -3,9 +3,11 @@ import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import { useNavigationParam } from 'react-navigation-hooks';
 import axios from 'axios';
 
+
 const Movie = () => {
   const strain = useNavigationParam('Strain');
   const [genre, setGenre] = useState({});
+  const [movie, setMovie] = useState({});
   const key = '446d9b88173473ed0acd5d7fed14558e';
 
 
@@ -19,7 +21,6 @@ const Movie = () => {
     const url = `https://buddflix.herokuapp.com/api/genre?race=${strain.race.id}`;
     axios.get(url).then(response => {
         let data = response.data.objects;
-        console.log(data)
         data.forEach(item => {
             tempGenre.push(item)
         })
@@ -29,10 +30,23 @@ const Movie = () => {
 
   useEffect(() => {
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_genres=${genre.tmdb_id}`;
-    axios.get(url).then(response => console.log(response))
-  }, genre);
+    axios.get(url).then(response => {
+        const movieData = response.data.results;
+        const movieChoice = selectRandom(movieData);
+        setMovie(movieChoice);
 
-  console.log(genre)
+    })
+  }, [genre]);
+
+//   const display = movie.map((film) => {
+//       return (
+//           <Text>{film.title}</Text>
+//       )
+//   });
+
+const renderMovie = movie && (
+    <Text>{movie.title}</Text>
+)
 
   const styles = StyleSheet.create({
     container: {
@@ -43,7 +57,12 @@ const Movie = () => {
     },
   });
 
-  return <Text>Hello {strain.name}</Text>;
+  return (
+    <View>
+        <Text>Hello {strain.name}</Text>
+        {renderMovie}
+    </View>
+  )
 };
 
 export default Movie;
