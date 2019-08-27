@@ -9,6 +9,7 @@ const Movie = () => {
   const [genre, setGenre] = useState({});
   const [movie, setMovie] = useState({});
   const key = '446d9b88173473ed0acd5d7fed14558e';
+  const imgBaseUrl = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/'
 
 
   function selectRandom(array) {
@@ -33,19 +34,16 @@ const Movie = () => {
     axios.get(url).then(response => {
         const movieData = response.data.results;
         const movieChoice = selectRandom(movieData);
-        setMovie(movieChoice);
-
+      setMovie(movieChoice);
     })
   }, [genre]);
 
-//   const display = movie.map((film) => {
-//       return (
-//           <Text>{film.title}</Text>
-//       )
-//   });
 
 const renderMovie = movie && (
-    <Text>{movie.title}</Text>
+    <>
+        <Text>{movie.title}</Text>
+        <Image style={{width: 66, height: 58}} source={{uri:`${imgBaseUrl}${movie.poster_path}`}}  />
+    </>
 )
 
   const styles = StyleSheet.create({
@@ -58,7 +56,7 @@ const renderMovie = movie && (
   });
 
   return (
-    <View>
+    <View style={styles.container}>
         <Text>Hello {strain.name}</Text>
         {renderMovie}
     </View>
