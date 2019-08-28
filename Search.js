@@ -1,12 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, TextInput } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks';
-import logo from './Images/logo.png';
+import axios from 'axios';
+
 
 
 
 const Search = () => {
     const { navigate } = useNavigation();
+    const [serach, setSearch] = useState();
+
+    useEffect(()=> {
+        axios.get(`https://buddflix.herokuapp.com/api/strain?name__icontains=${search}`)
+    })
 
 
 const styles = StyleSheet.create({
@@ -19,7 +25,10 @@ const styles = StyleSheet.create({
   });
 
     return (
-        <TextInput placeholder='Search by strain name...' />
+        <TextInput 
+        placeholder='Search by strain name...'
+        onChange={(text) => setSearch(text)}
+        />
     )
 }
 
