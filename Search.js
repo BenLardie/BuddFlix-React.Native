@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, TextInput } from 'react-native';
+import { StyleSheet, TextInput, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks';
 import axios from 'axios';
 
@@ -13,15 +13,32 @@ const Search = () => {
         console.log(search)
         axios.get(`https://buddflix.herokuapp.com/api/strain?name__icontains=${search}`)
         .then(response => {
-            results = response.data.objects
-            console.log(response.data)
-            setSearchResults(results);
+            setSearchResults(response.data.objects)
+
         })
     },[search])
 
     // useEffect(()=> {
     //     display()
     // },[searchResults])
+
+    const styles = StyleSheet.create({
+        container: {
+          paddingTop: 60,
+          alignItems: 'center'
+        },
+        button: {
+          marginBottom: 30,
+          width: 260,
+          alignItems: 'center',
+          backgroundColor: '#2196F3'
+        },
+        buttonText: {
+          textAlign: 'center',
+          padding: 20,
+          color: 'white'
+        }
+      });
 
 
     const display = searchResults.map((strain) => { 
@@ -37,25 +54,16 @@ const Search = () => {
         })
     
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-  });
+
+
 
     return (
         <>
             <TextInput 
             placeholder='Search by strain name...'
-            onChange={(text) => {
-                text.persist()
+            onChangeText={(text) => {
                 setSearch(text)
-            
-            }
-            }
+            }}
             />
         {display}
         </>
