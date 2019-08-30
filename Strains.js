@@ -34,6 +34,9 @@ const Strains = () => {
     return (
         <View style= {styles.container}>
         {display}
+        <TouchableOpacity style={styles.button}  onPress={() => navigate('Search')}>
+                <Text style={styles.buttonText}>Search</Text>
+            </TouchableOpacity>
        </View>
     )
 }

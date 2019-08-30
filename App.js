@@ -5,6 +5,7 @@ import Strain from './Strains';
 import Welcome from './Welcome';
 import StrainList from './StrainList';
 import Movie from './Movie';
+import Search from './Search';
 
 export default function App() {
 
@@ -13,6 +14,7 @@ export default function App() {
       Strains:{screen: Strain},
       StrainList:{screen: StrainList},
       Movie:{screen:Movie},
+      Search:{screen:Search},
     });
 
     const AppContainer = createAppContainer(AppNavigator)
