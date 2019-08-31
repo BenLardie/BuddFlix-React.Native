@@ -9,18 +9,11 @@ const Search = () => {
     const [searchResults, setSearchResults] = useState([]);
 
     useEffect(()=> {
-        const results = [];
-        console.log(search)
         axios.get(`https://buddflix.herokuapp.com/api/strain?name__icontains=${search}`)
         .then(response => {
             setSearchResults(response.data.objects)
-
         })
     },[search])
-
-    // useEffect(()=> {
-    //     display()
-    // },[searchResults])
 
     const styles = StyleSheet.create({
         container: {
@@ -57,17 +50,15 @@ const Search = () => {
 
 
 
-    return (
-        <>
-            <TextInput 
-            placeholder='Search by strain name...'
-            onChangeText={(text) => {
-                setSearch(text)
-            }}
-            />
-        {display}
-        </>
-    )
-}
+  return (
+    <>
+      <TextInput
+        placeholder="Search by strain name..."
+        onChangeText={text => setSearch(text)}
+      />
+      {display}
+    </>
+  );
+};
 
 export default Search;
