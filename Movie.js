@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import { useNavigationParam } from 'react-navigation-hooks';
 import axios from 'axios';
+import Trailer from './Trailer';
 
 
 const Movie = () => {
@@ -43,6 +44,7 @@ const renderMovie = movie && (
     <>
         <Text>{movie.title}</Text>
         <Image style={{width: 66, height: 58}} source={{uri:`${imgBaseUrl}${movie.poster_path}`}}  />
+        <Trailer movieId={movie.id} />
     </>
 )
 
