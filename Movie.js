@@ -5,10 +5,11 @@ import axios from 'axios';
 import Trailer from './Trailer';
 
 
-const Movie = () => {
+const Movie = ({ navigation }) => {
   const strain = useNavigationParam('Strain');
   const [genre, setGenre] = useState({});
   const [movie, setMovie] = useState({});
+  const [title, setTitle] = useState('');
   const key = '446d9b88173473ed0acd5d7fed14558e';
   const imgBaseUrl = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/'
 
@@ -20,6 +21,7 @@ const Movie = () => {
 
   useEffect(() => {
     const tempGenre = [];
+    setTitle(strain.name)
     const url = `https://buddflix.herokuapp.com/api/genre?race=${strain.race.id}`;
     axios.get(url).then(response => {
         let data = response.data.objects;
@@ -29,6 +31,12 @@ const Movie = () => {
         setGenre(selectRandom(tempGenre))
     });
   }, []);
+
+  useEffect(() => { 
+    navigation.setParams({ 
+        headerTitle: title 
+    }) 
+}, [title])
 
   useEffect(() => {
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_genres=${genre.tmdb_id}`;
@@ -64,5 +72,9 @@ const renderMovie = movie && (
     </View>
   )
 };
-
+Movie.navigationOptions = ({ navigation }) => {
+  return {
+      title: navigation.getParam('headerTitle'),
+  }
+}
 export default Movie;

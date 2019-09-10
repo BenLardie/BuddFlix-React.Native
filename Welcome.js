@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
             borderColor: 'red',
             marginLeft: 5,
             marginRight: 5,
-            marginTop: 10,
+            // marginTop: 10,
             marginBottom: 10,
         },
         buttonText: {
@@ -44,17 +44,19 @@ const styles = StyleSheet.create({
   );
 
     return (
+        <>
         <View style={styles.container}>
             <Image 
                 source={logo}
                 style={styles.image} />
-            <TouchableOpacity
-                style={styles.button}
-                onPress={() => navigate('Strains')}
-            >
-                <Text style={styles.buttonText}>Pick a Strain</Text>
-            </TouchableOpacity>
-        </View>
+         </View>
+        <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigate('Strains')}
+        >
+        <Text style={styles.buttonText}>Pick a Strain</Text>
+        </TouchableOpacity>
+        </>
     )
 }
 

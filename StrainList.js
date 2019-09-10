@@ -9,12 +9,14 @@ const StrainList = () => {
     const strain = useNavigationParam('selectedStrain');
     const [allStrains, setAllStrains] = useState([]);
     
+    
     useEffect(()=> {
         const url = `https://buddflix.herokuapp.com/api/strain/?race=${strain.id}`
         axios.get(url).then(response => {
             const results = response.data.objects;
             setAllStrains(results);
     })},[])
+
 
     const styles = StyleSheet.create({
         container: {
