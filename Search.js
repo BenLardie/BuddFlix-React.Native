@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, TextInput, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks';
 import axios from 'axios';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Search = () => {
     const { navigate } = useNavigation();
@@ -56,7 +57,9 @@ const Search = () => {
         placeholder="Search by strain name..."
         onChangeText={text => setSearch(text)}
       />
-      {display}
+      <ScrollView>
+        {display}
+      </ScrollView>
     </>
   );
 };

@@ -41,6 +41,17 @@ const Strains = () => {
     )
 }
 
+Strains.navigationOptions = {
+    title: 'Pick a Strain',
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  };
+
 const styles = StyleSheet.create({
     container: {
       paddingTop: 60,

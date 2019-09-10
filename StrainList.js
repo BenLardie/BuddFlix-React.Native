@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useNavigationParam, useNavigation } from 'react-navigation-hooks';
 import axios from 'axios';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const StrainList = () => {
     const { navigate } = useNavigation();
@@ -47,9 +48,9 @@ return (
 
 
     return (
-        <View>
+        <ScrollView>
             {display}
-        </View>
+        </ScrollView>
     )
 };
 
