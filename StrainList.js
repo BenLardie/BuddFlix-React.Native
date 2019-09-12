@@ -24,15 +24,23 @@ const StrainList = () => {
           alignItems: 'center'
         },
         button: {
-          marginBottom: 30,
-          width: 260,
-          alignItems: 'center',
-          backgroundColor: '#2196F3'
+            alignSelf: 'stretch',
+            backgroundColor: 'black',
+            borderRadius: 5,
+            borderWidth: 3,
+            borderColor: 'red',
+            marginLeft: 5,
+            marginRight: 5,
+            marginTop: 10,
+            marginBottom: 10,
         },
         buttonText: {
           textAlign: 'center',
-          padding: 20,
-          color: 'white'
+          paddingTop: 10,
+          paddingBottom: 10,
+          color: 'white',
+          fontWeight: '600',
+          fontSize: 16
         }
       });
 

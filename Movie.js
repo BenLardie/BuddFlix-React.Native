@@ -67,14 +67,20 @@ const renderMovie = movie && (
 
   return (
     <View style={styles.container}>
-        <Text>Hello {strain.name}</Text>
         {renderMovie}
     </View>
   )
 };
 Movie.navigationOptions = ({ navigation }) => {
   return {
-      title: navigation.getParam('headerTitle'),
+      title: 'Movie for ' + navigation.getParam('headerTitle'),
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
   }
 }
 export default Movie;
