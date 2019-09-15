@@ -58,7 +58,7 @@ return (
 
 
     return (
-        <ScrollView>
+        <ScrollView style={styles.container}>
             {display}
         </ScrollView>
     )
